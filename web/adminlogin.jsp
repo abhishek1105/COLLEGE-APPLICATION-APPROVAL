@@ -7,13 +7,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+       
         <title>COLLEGE APPLICATION APPROVAL</title>
     </head>
     <body>
         <%
-         String user=request.getParameter("user");
-            String pass=request.getParameter("pwsd");
+         String user=request.getParameter("admin");
+            String pass=request.getParameter("apwsd");
             String url = "jdbc:mysql://localhost:3306/project?useSSL=false&allowPublicKeyRetrieval=true&verifyServerCertificate=false&allowMultiQueries=true";
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn =DriverManager.getConnection(url,"root","qwerty@");
@@ -35,12 +35,12 @@
       {
           if(user.equals(username)  )
           {
-                RequestDispatcher rd=request.getRequestDispatcher("HOMEPAGE.jsp");
+                RequestDispatcher rd=request.getRequestDispatcher("ADHOMEPAGE.jsp");
                 HttpSession s= request.getSession();
-               s.setAttribute("cuser",user);                
+//               s.setAttribute("cuser",user);                
              s.setAttribute("cname",cname);
-              s.setAttribute("cemail",cemail);
-              s.setAttribute("cmobile",cmobile);
+//              s.setAttribute("cemail",cemail);
+//              s.setAttribute("cmobile",cmobile);
               
 //              s.setAttribute("fathername",cfathername);
              

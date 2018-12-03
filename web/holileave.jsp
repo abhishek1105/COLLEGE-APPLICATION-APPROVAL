@@ -4,6 +4,12 @@
     Author     : Abc
 --%>
 
+<%@page import="java.io.FileOutputStream"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html>
 <head>
@@ -17,11 +23,11 @@ background-color:white;
 /*background: linear-gradient(to bottom,  lightcyan 0%,#f6f6f6 100%);*/
 float:right;
 width:200px;
-height:600px;
+height:900px;
 }
 .lftdiv{
 width:200PX;
-height:600px;
+height:900px;
 background-color:white;
 float:left;
 /*background: linear-gradient(to bottom,  lightcyan 0%,#f6f6f6 100%);*/
@@ -75,10 +81,14 @@ float:right;
         background-color: white;
         margin-left: 100px;
 }
-.gate{
-    height: 400px;
-    width:100%;
-     background: linear-gradient(to right,  #9c9e9f 0%,#f6f6f6 100%);
+.gate{ 
+    background: radial-gradient(#FFE4B5, white);
+	height:460px;;
+	width:650px;;
+	margin:auto;
+	border-radius:30px;
+	box-shadow:5px 5px 5px black;
+       
 }
 .headgate{
     height: 30px;
@@ -99,47 +109,87 @@ float:right;
 <div class="navbar">
 <div class="butt">
     <a href="LogOutServlet" >Log out</a></div>
-   <a href="CONTACT.jsp">Contact</a>
+<!--   <a href="CONTACT.jsp">Contact</a>
    <a href="STATUS.jsp">Status</a>
-   <a href="ABOUTUS.jsp">About Us</a>
+   <a href="ABOUTUS.jsp">About Us</a>-->
    <a href="HOMEPAGE.jsp" class="active">Home</a>  
    <a href="HOMEPAGE.jsp" class="active1" style="float:left;">College Appliation Approval</a></div>
 <br><br><br>
 <div class="lftdiv"></div>
 <div class="rightdiv"></div>
-   <div class="gate">
+  
        <div class="headgate">
            Holiday Leave Pass:
        </div>
+ <div class="gate">
        <form action="holileave" method="get">
-           <table class="tabform" cellspacing="10">
+           <table align="center" cellspacing="10">
                <tr><td>DATE</td><td> :</td><td><p>
                            <script> document.write(new Date().toLocaleDateString()); </script>
                        </p></td></tr>
-               <tr><td>Name</td><td>:</td><td><input type="text" name="name" required></td></tr>
-               <tr><td>Student Number</td><td>:</td><td><input type="tel" name="smob" maxlength="10" required></td></tr>
+               <tr><td>Name</td><td>:</td><td><input type="text" name="name" value="<%=session.getAttribute("cname").toString() %>" required></td></tr>
+                <tr><td>ID</td><td>:</td><td><input type="text" name="id" value="<%=session.getAttribute("cid").toString() %>" required></td></tr>
+               <tr><td>Student Number</td><td>:</td><td><input type="tel" name="smob" maxlength="10" value="<%=session.getAttribute("cmobile").toString() %>" required></td></tr>
                <tr><td>Father's Nane</td><td>:</td><td><input type="text" name="fathername" required></td></tr>
                <tr><td>Parents Number</td><td>:</td><td><input type="tel" name="parentmob" maxlength="10" required></td></tr>
                <tr><td>Leave Required From </td><td>:</td><td><input type="datetime-local" name="sdate"></td></tr>
                <tr><td>To </td><td>:</td><td><input type="datetime-local" name="edate"></td></tr>
-               <tr><td>Address</td><td>:</td><td><textarea rows="4" cols="50" placeholder="write proper address" name="address" required></textarea></td></tr>
-               <tr><td>Leave Required Reason </td><td>:</td><td><textarea rows="4" cols="50" placeholder="write valid reason" name="reason" required></textarea></td></tr>
+               <tr><td>Address</td><td>:</td><td><textarea rows="4" cols="35" placeholder="write proper address" name="address" required></textarea></td></tr>
+               <tr><td>Leave Required Reason </td><td>:</td><td><textarea rows="4" cols="35" placeholder="write valid reason" name="reason" required></textarea></td></tr>
                <tr><td></td><td><input type="reset" value="Reset">
-  <input type="submit" value="Submit"></td><td></td></tr>       
+  <input type="submit" value="Submit"></td><td></td></tr>         
            </table>
        </form>
    </div>
 <div class="complaint">
+    <P  align="center" style="font-family:Courier new;font-size:40px">YOUR REQUESTS</P>
     <table align="center"  width="70%">
         <tr style="background: linear-gradient(to right,  red 0%,white 100%);font-family: courier new;">
             <th>#</th>
             <th>NAME</th>
             <th>ID</th>
+            <th>NUMBER</th>
             <th>APPLY DATE</th>          
             <th>HOLIDAY REASON</th>
             <th>STATUS</th>
         </tr>
-        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+         <% 
+             String url="jdbc:mysql://localhost:3306/project?useSSL=false&verifyServerCertificate=false&allowMultiQueries=true";
+            try{
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection conn = DriverManager.getConnection(url,"root","qwerty@");
+        String q = "Select * from holileave;";
+        PreparedStatement ps = conn.prepareStatement(q);
+        ResultSet rs = ps.executeQuery();
+        FileOutputStream fout = null;
+        int i=1;
+        int j=1;
+        while(rs.next()){
+            
+              String name = rs.getString(1);
+              String id = rs.getString(2);
+              String number = rs.getString(3);
+              String date = rs.getString(6);
+              String reason = rs.getString(9);
+              %>
+              <tr style="background: linear-gradient(to right,  red 0%,white 100%);font-family: courier new;">
+            <td><%=j%></td>
+            <td><%out.print(name);%></td>
+            <td><%out.print(id);%></td>
+            <td><%out.print(number);%></td>
+            <td><%out.print(date);%></td>
+            <td><%out.print(reason);%></td>
+        </tr>
+                <%
+              i++;
+              j++;
+            }
+        fout.close();
+          }
+         catch(Exception e){
+            System.out.print(e);
+         }
+        %>
     </table>
 </div>
    

@@ -20,16 +20,20 @@ public class passChangeServlet extends HttpServlet {
             throws ServletException, IOException {
       response.setContentType("text/html;charset=UTF-8");
         PrintWriter out  = response.getWriter();
-        String user = request.getParameter("user");
-        String npass = request.getParameter("npass");
+        
+           String oldp = request.getParameter("old");
+        String npass = request.getParameter("pswd");
+         String cpass = request.getParameter("cpswd");
         
         
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project?useSSL=true&verifyServerCertificate=false&allowMultiQueries=true","root","qwerty@");
-            PreparedStatement ps = con.prepareStatement("UPDATE signupdata set password= ? WHERE username = ?");
-            ps.setString(2,user);
-            ps.setString(1,npass);
+            PreparedStatement ps = con.prepareStatement("UPDATE signupdata set cpassword = ? , password= ? WHERE password = ? ");
+           ps.setString(1,cpass);
+            ps.setString(2,npass);
+            ps.setString(3,oldp);
+            
             
             int i = ps.executeUpdate();
             if(i > 0){

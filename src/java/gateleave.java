@@ -20,14 +20,13 @@ public class gateleave extends HttpServlet {
         String URL;
         URL = "jdbc:mysql://localhost:3306/project?useSSL=false&allowPublicKeyRetrieval=true&verifyServerCertificate=false&allowMultiQueries=true";
         try{  
-            String sname = request.getParameter("name");
-            
-                    String id = request.getParameter("fid");
-                 String ssdate = request.getParameter("sdate");
-                 String sedate = request.getParameter("edate");
+            String sname = request.getParameter("name"); 
+            String id = request.getParameter("fid");
+            String ssdate = request.getParameter("sdate");
+            String sedate = request.getParameter("edate");
             String sreason = request.getParameter("reason");
             pw.println(sname);
-            pw.println(id);
+            pw.println(id);      
             pw.println(ssdate);
             pw.println(sedate);
             pw.println(sreason);

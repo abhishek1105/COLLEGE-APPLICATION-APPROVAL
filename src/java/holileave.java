@@ -25,6 +25,7 @@ public class holileave extends HttpServlet {
         URL = "jdbc:mysql://localhost:3306/project?useSSL=false&allowPublicKeyRetrieval=true&verifyServerCertificate=false&allowMultiQueries=true";
         try{  
             String sname = request.getParameter("name");
+            String sid = request.getParameter("id");
             String ssnumber = request.getParameter("smob");
             String fathername = request.getParameter("fathername");
             String spnumber = request.getParameter("parentmob");
@@ -42,16 +43,17 @@ public class holileave extends HttpServlet {
             pw.println(sreason);
             Class.forName("com.mysql.cj.jdbc.Driver");
             try (Connection con = DriverManager.getConnection(URL,"root","qwerty@")) {
-                String q= "insert into holileave values (?,?,?,?,?,?,?,?)";
+                String q= "insert into holileave values (?,?,?,?,?,?,?,?,?)";
                 PreparedStatement stat = con.prepareStatement(q);
                  stat.setString(1,sname);
-                 stat.setString(2,ssnumber);
-                 stat.setString(3,fathername);
-                 stat.setString(4,spnumber);
-                 stat.setString(5,ssdate);
-                 stat.setString(6,sedate);
-                 stat.setString(7,addr);
-                 stat.setString(8,sreason);
+                  stat.setString(2,sid);
+                 stat.setString(3,ssnumber);
+                 stat.setString(4,fathername);
+                 stat.setString(5,spnumber);
+                 stat.setString(6,ssdate);
+                 stat.setString(7,sedate);
+                 stat.setString(8,addr);
+                 stat.setString(9,sreason);
                  
                  int i = stat.executeUpdate();
                  if(i>0){

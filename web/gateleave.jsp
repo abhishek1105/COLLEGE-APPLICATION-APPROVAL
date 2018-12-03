@@ -4,6 +4,12 @@
     Author     : Abc
 --%>
 
+<%@page import="java.sql.Blob"%>
+<%@page import="java.io.FileOutputStream"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html>
 <head>
@@ -18,6 +24,15 @@ background-color:white;
 float:right;
 width:200px;
 height:600px;
+}
+.div1{
+    background: radial-gradient(#FFE4B5, white);
+	height:300px;;
+	width:650px;;
+	margin:auto;
+	border-radius:30px;
+	box-shadow:5px 5px 5px black;
+       
 }
 .lftdiv{
 width:200PX;
@@ -88,9 +103,7 @@ float:right;
      font-size: 25px;
      color:white;
 }
-.tabform{
-    align:center;
-}
+
 </style>
 
 <title>College Application Approval</title>
@@ -99,20 +112,21 @@ float:right;
 <div class="navbar">
 <div class="butt">
     <a href="LogOutServlet" >Log out</a></div>
-   <a href="CONTACT.jsp">Contact</a>
+<!--   <a href="CONTACT.jsp">Contact</a>
    <a href="STATUS.jsp">Status</a>
-   <a href="ABOUTUS.jsp">About Us</a>
+   <a href="ABOUTUS.jsp">About Us</a>-->
    <a href="HOMEPAGE.jsp" class="active">Home</a>  
    <a href="HOMEPAGE.jsp" class="active1" style="float:left;">College Appliation Approval</a></div>
 <br><br><br>
 <div class="lftdiv"></div>
 <div class="rightdiv"></div>
-   <div class="gate">
+  
        <div class="headgate">
            Gate Pass:
        </div>
+       <div class="div1">
        <form action="gateleave" method="get">
-           <table class="tabform" cellspacing="10">
+           <table align="center" cellspacing="10">
                <tr><td>DATE</td><td> :</td><td><p>
                            <script> document.write(new Date().toLocaleDateString()); </script>
                        </p></td></tr>
@@ -121,14 +135,16 @@ float:right;
                <tr><td>Leave Required From </td><td>:</td><td><input type="datetime-local" name="sdate"></td></tr>
                <tr><td>To </td><td>:</td><td><input type="datetime-local" name="edate"></td></tr>
                <tr><td>Leave Required Reason </td>
-                   <td>:</td><td><textarea rows="4" cols="50" placeholder="write valid reason" name="reason"></textarea></td></tr>
+                   <td>:</td><td><textarea rows="4" cols="35" placeholder="write valid reason" name="reason"></textarea></td></tr>
                <tr><td></td><td><input type="reset" value="Reset">
   <input type="submit" value="Submit"></td><td></td></tr>       
            </table>
        </form>
-   </div>
+       </div>
+  
 <div class="complaint">
     <table align="center"  width="70%">
+         <P  align="center" style="font-family:Courier new;font-size:40px">YOUR REQUESTS</P>
         <tr style="background: linear-gradient(to right,  red 0%,white 100%);font-family: courier new;">
             <th>#</th>
             <th>NAME</th>
@@ -137,9 +153,46 @@ float:right;
             <th>LEAVE REASON</th>
             <th>STATUS</th>
         </tr>
-        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+         <% 
+             String url="jdbc:mysql://localhost:3306/project?useSSL=false&verifyServerCertificate=false&allowMultiQueries=true";
+            try{
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection conn = DriverManager.getConnection(url,"root","qwerty@");
+        String q = "Select * from gateleave;";
+        PreparedStatement ps = conn.prepareStatement(q);
+        ResultSet rs = ps.executeQuery();
+        FileOutputStream fout = null;
+        int i=1;
+        int j=1;
+        while(rs.next()){
+            
+              String name = rs.getString(1);
+              String id = rs.getString(2);
+              String date = rs.getString(3);
+              String reason = rs.getString(5);
+              %>
+              <tr style="background-color:white;font-family: courier new;">
+            <td ><%=j%></td>
+            <td><%out.print(name);%></td>
+            <td><%out.print(id);%></td>
+            <td><%out.print(date);%></td>
+            <td><%out.print(reason);%></td>
+        </tr>
+                <%
+              i++;
+              j++;
+            }
+        fout.close();
+          }
+         catch(Exception e){
+            System.out.print(e);
+         }
+        %>
     </table>
 </div>
    
    </body>
+   
+   
+   
 </html>

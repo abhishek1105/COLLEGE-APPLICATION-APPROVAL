@@ -41,8 +41,9 @@ height:1500px;
     width:100%;
 }
 .welcomediv{
+    
     background-color:white;
-    height:100px;
+    height:83px;
     width:100%;
 }
 .middiv{
@@ -73,29 +74,12 @@ background-color:white;
 border-radius:10px;
 
 }
-.hdiv1{
-/*    background-color: lightblue;*/
-background: linear-gradient(to right,  #9c9e9f 0%,#f6f6f6 100%);
-    height: 20%;
-    width: 100%;
-}
-.hdiv2{
-    background: linear-gradient(to right,  #f6f6f6 0%, #9c9e9f 100%);
-/*    background-color: lightblue;*/
-    height: 20%;
-    width: 100%;
-}
-.hdiv3{
-/*    background-color: lightblue;*/
-background: linear-gradient(to right,  #9c9e9f 0%,#f6f6f6 100%);
-    height: 20%;
-    width: 100%;
-}
+
 
 
 
 .navbar {  
-  overflow: hidden;
+/*  overflow: hidden;*/
 /*  background-color: #333;*/
 background: linear-gradient(to left,  #333 0%,#f6f6f6 100%);
   position: fixed;
@@ -162,7 +146,7 @@ font-size:20px;}
 
 
 ul li {
-  position: relative;
+/*  position: relative;*/
 	padding-bottom: 10px;
 }
 
@@ -199,9 +183,13 @@ li a:hover{
     border-radius:20px;
 }
 .probutton1{
-    height: 80px;
+    margin-top:10%;
+    text-align: center;
+    
+    border-radius: 30px;
+    height: 150%;
     width: 100%;
-   background: linear-gradient(to right,  white 0%,grey 100%);
+   background: radial-gradient(lightgoldenrodyellow,white);
     text-align: center;
     border-bottom:3px solid black;
     font-family:Courier new;
@@ -216,21 +204,174 @@ li a:hover{
 .welcomediv abbr{
     text-decoration: none;
 }
+.welcomediv a:hover{
+   background: linear-gradient(to left,  red 0%,black 100%);
+}
 
 
+* {box-sizing: border-box;}
+body {font-family: Verdana, sans-serif;}
+.mySlides1 {display: none;}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow1-container {
+  max-width: 1000px;
+/*  position: relative;*/
+  margin: auto;
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+/*  position: absolute;*/
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+
+
+/* The dots/bullets/indicators */
+.dot1 {
+  height: 5px;
+  width: 5px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active1 {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+* {box-sizing: border-box;}
+body {font-family: Verdana, sans-serif;}
+.mySlides {display: none;}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+/*  position: relative;*/
+  margin: auto;
+  
+  border-radius: 50%;
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+/*  position: absolute;*/
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+/*  position: absolute;*/
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  height: 5px;
+  width: 5px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+.th{
+    margin-left: 1%;
+    margin-right: 1%;
+    background-color: white;
+    width:600px;
+    float:right;
+    height: 450px;
+    text-align: center;
+    border-radius: 15px;
+    margin-bottom: 2%;
+}
+/*.th1{
+    background-image: "img33";
+    height: 450px;
+    width:300px;
+    border-radius:30px;
+}*/
 </style>
-
 <title>College Application Approval</title>
 </head>
 <body>
 <div class="navbar">
 <div class="butt">
     <a href="LogOutServlet" >Log out</a></div>
-   <a href="CONTACT.jsp">Contact</a>
+<!--   <a href="CONTACT.jsp">Contact</a>
    <a href="STATUS.jsp">Status</a>
-   <a href="ABOUTUS.jsp">About Us</a>
+   <a href="ABOUTUS.jsp">About Us</a>-->
    <a href="HOMEPAGE.jsp" class="active">Home</a>  
-   <a href="HOMEPAGE.jsp" class="active1" style="float:left;">College Appliation Approval</a>
+   <a href="HOMEPAGE.jsp" class="active1" style="float:left;border-radius:15px;">College Appliation Approval</a>
 		 
   
 </div>
@@ -254,24 +395,16 @@ li a:hover{
 <div class="rightdiv">
     
     <div class="welcomediv">
-         <DIV class="probutton1">
-             WELCOME
-             <br>
-         <%=      
-            session.getAttribute("cid").toString()  
-        %>
-             <BR>
-        <%=      
-            session.getAttribute("cname").toString()  
-        %>
-        
-        </DIV>
-        <br>
-      <br>
-      
-        
-        <abbr title="Change name,username,password"><a href="accounts.jsp"><DIV class="probutton1">ACCOUNTS</DIV></a></abbr>  
-            
+        <a href="accounts.jsp"><abbr title="Change name,username,password"><DIV class="probutton1">
+                    WELCOME, <%=      
+                        session.getAttribute("cname").toString()  
+%>   
+<BR>
+<%=      
+    session.getAttribute("cid").toString()  
+%>      
+                </DIV></abbr> </a> 
+                
     </div>
     <div class="getdiv">
         <form action="getinservlet" method="get">
@@ -306,7 +439,7 @@ li a:hover{
             </div></a>
         
         
-        <a href=""><div class="sdiv">
+        <a href="accounts.jsp"><div class="sdiv">
                 <p><b>STUDENT INFO</b></p>
                 <p>KNOW YOUR PERSONAL INFORMATION</p>
             </div></a>
@@ -318,26 +451,132 @@ li a:hover{
             </div></a>
     </div>
    
-    <div class="hdiv1">
-       
-    </div>
-<!--      <script>
-$(document).ready(function(){
-    $(".hdiv1").mouseenter(function(){
-        $(this).css({"background": "linear-gradient(to right,red 0%,yellow 100%)","height":"30%"});
-    });
-    $(".hdiv1").mouseleave(function(){
-        $(this).css({"background": "linear-gradient(to right,#9c9e9f 0%,#f6f6f6 100%)","height":"20%","width":"100%"});
-    });
-   });
-</script>-->
-     <div class="hdiv2">
-        
-    </div>
-    <div class="hdiv3">
-        
-    </div>
+
+   
+
+
+<div class="slideshow-container">
+
+<div class="mySlides fade">
+ 
+  <img src="pic1.jpg" style="width:94.7%;height: 30%;border-radius: 30px;">
   
+</div>
+
+<div class="mySlides fade">
+  
+  <img src="pic2.jpg" style="width:94.7%;height: 30%;border-radius: 30px;">
+  
+</div>
+
+<div class="mySlides fade">
+  
+  <img src="pic3.jpg" style="width:94.7%;height: 30%;border-radius: 30px;">
+  
+</div>
+
+</div>
+
+<div style="text-align:center">
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+</div>
+
+<script>
+var slideIndex = 0;
+showSlides();
+
+function showSlides() {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    var dots = document.getElementsByClassName("dot");
+    for (i = 0; i < slides.length; i++) {
+       slides[i].style.display = "none";  
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {
+        slideIndex = 1;
+    }    
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";  
+    dots[slideIndex-1].className += " active";
+    setTimeout(showSlides, 3000); // Change image every 2 seconds
+}
+</script>
+    <div class="th1">
+        
+    </div>
+    <div class="th">
+        <img src="pic4.png" style="width:70px;height: 70px;margin-top: 3%;">
+        <p style="font-size:40px;">Your Career Needs
+Chitkara University</p>
+    <p>Chitkara University in Himachal Pradesh has been founded by Dr. Ashok Chitkara and Dr. Madhu Chitkara who have been
+        passionate teachers for more than 40 years now. Since inception,
+        Chitkara University has been different. 
+        Our students have been different. So are our faculty, our academic strengths and our outlook on teaching and learning.
+
+Within a decade, most of our academic programs are ranked in top 50 programs in the country. The unique difference being 
+that Chitkara University has been established by and managed by passionate academicians with the sole mission of making
+each and every student “industry-ready".</p>
+</div>
+    <div class="slideshow1-container">
+<div class="mySlides1 fade">
+ 
+  <img src="img1.jpg" style="width:94.7%;height: 30%;border-radius: 30px;">
+  
+</div>
+<div class="mySlides1 fade">
+ 
+  <img src="img2.jpg" style="width:94.7%;height: 30%;border-radius: 30px;">
+  
+</div>
+
+<div class="mySlides1 fade">
+  
+  <img src="img3.jpg" style="width:94.7%;height: 30%;border-radius: 30px;">
+  
+</div>
+
+<div class="mySlides1 fade">
+  
+  <img src="img4.jpg" style="width:94.7%;height: 30%;">
+  
+</div>
+
+</div>
+
+<div style="text-align:center">
+  <span class="dot1"></span> 
+  <span class="dot1"></span> 
+  <span class="dot1"></span> 
+  <span class="dot1"></span> 
+</div>
+    <script>
+var slideIndex1 = 0;
+showSlides1();
+
+function showSlides1() {
+    var i;
+    var slides = document.getElementsByClassName("mySlides1");
+    var dots = document.getElementsByClassName("dot1");
+    for (i = 0; i < slides.length; i++) {
+       slides[i].style.display = "none";  
+    }
+    slideIndex1++;
+    if (slideIndex1 > slides.length) {
+        slideIndex1 = 1;
+    }    
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active1", "");
+    }
+    slides[slideIndex1-1].style.display = "block";  
+    dots[slideIndex1-1].className += " active1";
+    setTimeout(showSlides1, 3000); // Change image every 2 seconds
+}
+</script>
 </div>
 
 </body>

@@ -18,6 +18,7 @@
             String user=request.getParameter("f_username");
             String rno=request.getParameter("f_uni_id");
             String pass=request.getParameter("fpass");
+            String pass1=request.getParameter("fpass");
             int b=Integer.parseInt(rno);
            
            
@@ -27,7 +28,7 @@
              String url = "jdbc:mysql://localhost:3306/project?useSSL=false&allowPublicKeyRetrieval=true&verifyServerCertificate=false&allowMultiQueries=true";
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn =DriverManager.getConnection(url,"root","qwerty@");
-            String query="UPDATE signupdata SET password ='"+pass+"' WHERE username='"+user+"' AND uniqueID='"+b+"'";
+            String query="UPDATE signupdata SET cpassword ='"+pass1+"' , password ='"+pass+"' WHERE username='"+user+"' AND uniqueID='"+b+"'";
             Statement st=conn.createStatement();
             int q=st.executeUpdate(query);
             if(q>0)
